@@ -311,7 +311,7 @@ function init() {
                             var data = responseJSON['data']
 //                            var url = 'http://localhost:8111/import?url=http://localhost/comcom/'+data['url'];
                             
-                            var url = 'http://localhost:8111/import?url=http://osm7.openstreetmap.fr/~vincentpottier/comcom/'+data['url'];
+                            var url = 'http://localhost:8111/import?url=http://comcommaker.openstreetmap.fr/'+data['url'];
                             map.ccm.josmRemote.src=url
                             break;
                         case 204: // Nothing found
@@ -378,7 +378,7 @@ function init() {
     map.ccm = ccm
     ccm.mapnik = new OpenLayers.Layer.OSM();
     ccm.overlays = new OpenLayers.Layer.OSM("Boundaries",
-                           "http://layers.openstreetmap.fr/tiles/renderer.py/boundary_local_authority/${z}/${x}/${y}.png",
+                           "http://a.layers.openstreetmap.fr/boundary_local_authority/${z}/${x}/${y}.png",
                            { numZoomLevels: 19,
                              isBaseLayer: false,
                              transitionEffect: "null",
