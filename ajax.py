@@ -87,7 +87,12 @@ def main(req):
         }
     if "where" in form:
         where = form['where'].value.split('\n')
-        w = ['ref."'+t.split('=')[0]+"\"='"+t.split('=')[1]+"'" for t in where]
+        w = []
+        for t in where:
+            if t.startswith("tags:"):
+                w.append('ref."tags"->\''+t[5:].split('=')[0]+"'='"+t.split('=')[1]+"'")
+            else:
+                w.append('ref."'+t.split('=')[0]+"\"='"+t.split('=')[1]+"'")
         params['where'] = " AND ".join(w)
     rows, sql = get_entity(params)
     if len(rows) == 0:
